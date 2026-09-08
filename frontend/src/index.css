@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-slate-50 font-sans text-ink antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-ink;
+  }
+  ::selection {
+    @apply bg-brand-200/60;
+  }
+  /* nicer scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(203 213 225) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-300;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  /* ---------- Buttons ---------- */
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold
+      transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40
+      focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white shadow-soft hover:bg-brand-700 active:scale-[.98];
+  }
+  .btn-secondary {
+    @apply btn border border-accent-200 bg-white text-accent-700 shadow-sm hover:bg-accent-50 active:scale-[.98];
+  }
+  .btn-ghost {
+    @apply btn text-ink-soft hover:bg-slate-100 hover:text-ink;
+  }
+  .btn-danger {
+    @apply btn bg-slate-700 text-white shadow-soft hover:bg-slate-800 active:scale-[.98];
+  }
+  .btn-sm {
+    @apply rounded-lg px-3 py-1.5 text-xs;
+  }
+
+  /* ---------- Forms ---------- */
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-soft;
+  }
+  .input {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-ink shadow-sm
+      transition placeholder:text-slate-400
+      focus:border-brand-400 focus:outline-none focus:ring-4 focus:ring-brand-100;
+  }
+  select.input {
+    @apply cursor-pointer appearance-none bg-[length:1.1rem] bg-[right_0.7rem_center] bg-no-repeat pr-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  }
+  .field-hint {
+    @apply mt-1 text-xs text-ink-muted;
+  }
+
+  /* ---------- Surfaces ---------- */
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white p-6 shadow-soft;
+  }
+  .card-tight {
+    @apply rounded-2xl border border-slate-200/80 bg-white p-4 shadow-soft;
+  }
+
+  /* ---------- Badges ---------- */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+
+  /* ---------- Tables ---------- */
+  .table-wrap {
+    @apply overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-soft;
+  }
+  .table-scroll {
+    @apply overflow-x-auto;
+  }
+  .th {
+    @apply whitespace-nowrap bg-slate-50/80 px-5 py-3.5 text-left text-[11px] font-semibold uppercase tracking-wider text-ink-muted;
+  }
+  .td {
+    @apply whitespace-nowrap px-5 py-4 text-sm text-ink-soft;
+  }
+  .row-hover {
+    @apply transition-colors hover:bg-slate-50/70;
+  }
+
+  /* ---------- Sidebar nav ---------- */
+  .nav-link {
+    @apply flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-300/90 transition-all;
+  }
+  .nav-link:hover {
+    @apply bg-white/5 text-white;
+  }
+  .nav-link-active {
+    @apply bg-brand-600 text-white shadow-soft;
+  }
+  .nav-link-active:hover {
+    @apply bg-brand-600 text-white;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-lg bg-slate-200/70;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---- Inline document viewers (docx-preview / pptx-preview) ---- */
+.doc-host {
+  padding: 1.25rem;
+}
+.doc-host .docx-wrapper {
+  background: transparent;
+  padding: 0;
+}
+.doc-host .docx-wrapper > section.docx {
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.08), 0 8px 28px -6px rgb(15 23 42 / 0.12);
+}
+/* @aiden0z/pptx-renderer slide list */
+.doc-host .pptx-slide,
+.doc-host [data-slide-index] {
+  margin: 0 auto 1rem;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.08), 0 8px 28px -6px rgb(15 23 42 / 0.12);
+}

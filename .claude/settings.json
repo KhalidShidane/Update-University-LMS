@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"require\\('dotenv'\\).config\\(\\);const m=require\\('mongoose'\\);\\(async\\(\\)=>{await m.connect\\(process.env.MONGO_URI\\);const U=require\\('./models/User'\\);for\\(const u of await U.find\\(\\).select\\('email role fullName'\\)\\)console.log\\(u.role,'|',u.email,'|',u.fullName\\);await m.connection.close\\(\\)}\\)\\(\\)\")"
+    ]
+  }
+}
