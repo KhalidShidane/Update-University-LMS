@@ -135,6 +135,9 @@ const logout = asyncHandler(async (_req, res) => {
 // @route PUT /api/auth/profile  (private) - multipart: optional `avatar` file + fields
 // Any authenticated user can update their own name, email, password and photo.
 const updateProfile = asyncHandler(async (req, res) => {
+    console.log("========== PROFILE UPDATE ==========");
+  console.log("BODY:", req.body);
+  console.log("FILE:", req.file);
   const { fullName, email, password, removeAvatar } = req.body;
   const user = await User.findById(req.user._id).select("+password");
 
