@@ -71,7 +71,7 @@ const getClasses = asyncHandler(async (req, res) => {
 const getClass = asyncHandler(async (req, res) => {
   const klass = await Class.findById(req.params.id).lean();
   if (!klass) {
-    res.status(404);
+    res.status(404);  
     throw new Error("Class not found");
   }
 
